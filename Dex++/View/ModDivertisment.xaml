@@ -6,16 +6,89 @@
              xmlns:local="clr-namespace:Dex__.View"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
-             Background="#31005c" FontSize="31">
+             Background="#31005c" FontSize="18"
+             x:Name="Divertisment">
     <Grid>
-        <Label Content="DIVERTISMENT"
-               HorizontalAlignment="Left" 
-               Margin="287,23,0,0" VerticalAlignment="Top">
-        </Label>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="20"/>
+        </Grid.ColumnDefinitions>
+
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
+
+        <Label Content="Spânzurătoarea"
+               Grid.Row="1"
+               Grid.Column="2"
+               Grid.ColumnSpan="2"
+               Margin="50,0,50,50"
+               HorizontalContentAlignment="Center"
+               FontSize="28"
+               FontWeight="Bold" 
+                />
+
         <Button x:Name="Home"
-            Content="Home" HorizontalAlignment="Left" 
-                Margin="44,355,0,0" VerticalAlignment="Top"
-                Width="112" Height="43" Click="Home_Click"/>
+                Content="Home" 
+                Grid.Column="1"
+                Grid.Row="4"
+                Margin="0,60,90,0"
+                Click="Home_Click"/>
+        <TextBlock 
+            Grid.Column="2" 
+            Margin="9.6,58,21.8,0.4" 
+            Grid.Row="1" 
+            TextWrapping="Wrap" 
+            Text="Numar greseli:"
+            Foreground="#FFF11919"
+            FontWeight="Bold" 
+            FontSize="22"
+            />
+        <TextBlock 
+            Grid.Column="2" 
+            Margin="9.6,10.6,68.4,47.8" 
+            Grid.Row="2" 
+            TextWrapping="Wrap" 
+            Text="Numar greseli permise: 10" 
+            Grid.ColumnSpan="2"
+            FontSize="22"
+            Foreground="#FFF11919"
+            FontWeight="Bold" 
+            />
+        <TextBox x:Name="litere"
+            Grid.Column="2" 
+            Grid.ColumnSpan="2"
+            Grid.Row="2" 
+            Margin="9.6,54.6,105.4,102.2" 
+            Text="TextBox" 
+            FontSize="22" Grid.RowSpan="2"
+            />
+        <Button x:Name="try"
+            Content="Try" 
+            Grid.Column="3"
+            Margin="79.2,54.6,36.4,102.2" 
+            Grid.Row="2" 
+            FontWeight="Bold" Click="try_Click" Grid.RowSpan="2"
+            />
+        <TextBlock x:Name="nrGreseli"
+            Text="{Binding Path=Greseli, ElementName=Divertisment}"            Grid.Column="2" 
+            Margin="173.6,58,110.4,0.4" 
+            Grid.Row="1" 
+            TextWrapping="Wrap" 
+            Foreground="#FFF11919"
+            FontWeight="Bold" 
+            FontSize="22" Grid.ColumnSpan="2"
+            />
 
     </Grid>
 </UserControl>

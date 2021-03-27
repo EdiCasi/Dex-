@@ -50,6 +50,7 @@
                  Margin="9.6,66,9.4,9.8" 
                  Grid.Row="1" 
                  Grid.RowSpan="2"
+                 TextWrapping="Wrap"
             />
 
 
