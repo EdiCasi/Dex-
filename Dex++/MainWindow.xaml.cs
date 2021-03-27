@@ -2,6 +2,7 @@
 using Dex__.View;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -43,6 +44,11 @@ namespace Dex__
         public void setContent(UserControl userControl)
         {
             this.Content = userControl;
+        }
+
+        public void DataWindow_Closing(object sender, CancelEventArgs e)
+        {
+            viewModel.writeCuvinteInFile();
         }
 
     }

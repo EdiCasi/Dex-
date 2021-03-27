@@ -20,5 +20,4 @@ C:\Users\Edi\source\repos\Dex++\Dex++\obj\Debug\View\ModAdministrativ.g.cs
 C:\Users\Edi\source\repos\Dex++\Dex++\obj\Debug\View\ModDivertisment.g.cs
 C:\Users\Edi\source\repos\Dex++\Dex++\obj\Debug\View\ModAdministrativ.baml
 C:\Users\Edi\source\repos\Dex++\Dex++\obj\Debug\View\ModDivertisment.baml
-C:\Users\Edi\source\repos\Dex++\Dex++\obj\Debug\GeneratedInternalTypeHelper.g.cs
 C:\Users\Edi\source\repos\Dex++\Dex++\obj\Debug\Dex++.csprojAssemblyReference.cache

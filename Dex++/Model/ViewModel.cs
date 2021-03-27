@@ -7,6 +7,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace Dex__.Model
 {
@@ -89,8 +90,11 @@ namespace Dex__.Model
                     if (entries.Length > 3)
                         cuvantNou.ImagePath = entries[3];
                 }
-                else cuvantNou.Categorie = "none";
-
+                else
+                {
+                    cuvantNou.Categorie = "none";
+                    cuvantNou.ImagePath = @"C:\C# Test\default.jpg";
+                }
                 Cuvinte.Add(cuvantNou);
             }
 
@@ -118,6 +122,82 @@ namespace Dex__.Model
         public bool verifyIfCategorieExists(string categorieNoua)
         {
             return Categorii.Contains(categorieNoua);
+        }
+
+        public void removeCuvantFormCuvinte(string cuvant)
+        {
+            int index = Cuvinte.FindIndex(c => c.Word == cuvant);
+            if (index != -1)
+            {
+                Cuvinte.RemoveAt(index);
+                MessageBox.Show("Cuvantul: " + cuvant + " a fost sters !");
+
+            }
+            else
+                MessageBox.Show("Cuvant negasit !");
+        }
+
+        public void adaugareCuvant(string cuvantName, string definitie, string categorie, string imagePath)
+        {
+            Cuvant cuvantNou = new Cuvant();
+
+            cuvantNou.Word = cuvantName;
+
+            if (definitie == "")
+            {
+                MessageBox.Show("Campul de definitie este obligatoriu!");
+                return;
+            }
+            else cuvantNou.Definitie = definitie;
+
+            if (categorie == "")
+                cuvantNou.Categorie = "none";
+            else cuvantNou.Categorie = categorie;
+
+            if (imagePath == "")
+                cuvantNou.ImagePath = @"C:\C# Test\default.jpg";
+
+            Cuvinte.Add(cuvantNou);
+
+            MessageBox.Show("Cuvantul: " + cuvantName + "a fost adaugat cu succes !");
+        }
+
+        public void modificareCuvant(string cuvantName, string definitie, string categorie, string imagePath)
+        {
+            Cuvant cuvant = GetCuvantFormText(cuvantName, "");
+
+            bool modificareFacuta = false;
+
+            if (definitie != "")
+            {
+                cuvant.Definitie = definitie;
+                modificareFacuta = true;
+            }
+
+            if (categorie != "")
+            {
+                cuvant.Categorie = categorie;
+                modificareFacuta = true;
+            }
+
+            if (imagePath != "")
+            {
+                cuvant.ImagePath = imagePath;
+                modificareFacuta = true;
+            }
+            if (modificareFacuta)
+                MessageBox.Show("Modificarea a fost facuta cu succes!");
+        }
+
+        public void writeCuvinteInFile()
+        {
+            StreamWriter sw = new StreamWriter(@"C:\C# Test\Words.txt");
+            foreach (Cuvant cuvant in Cuvinte)
+            {
+                string line = cuvant.Word + ";" + cuvant.Definitie + ";" + cuvant.Categorie + ";" + cuvant.ImagePath + ";";
+                sw.WriteLine(line);
+            }
+            sw.Close();
         }
     }
 }

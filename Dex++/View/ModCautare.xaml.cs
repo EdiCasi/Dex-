@@ -36,10 +36,18 @@ namespace Dex__.View
             {
                 parentWindow.setContent(parentWindow.Home);
             }
+
+            ClearWindow();
         }
 
         private void CuvantTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
+            if (CuvantTextBox.Text == "")
+            { 
+                CuvantListBox.Visibility = Visibility.Hidden; 
+                return; 
+            }
+
             MainWindow parentWindow = Window.GetWindow(this) as MainWindow;
 
             CuvantListBox.Visibility = Visibility.Visible;
@@ -94,7 +102,7 @@ namespace Dex__.View
 
             MainWindow parentWindow = Window.GetWindow(this) as MainWindow;
 
-            CuvantSelectat = parentWindow.viewModel.GetCuvantFormText(CuvantTextBox.Text,CategorieSelectata);
+            CuvantSelectat = parentWindow.viewModel.GetCuvantFormText(CuvantTextBox.Text, CategorieSelectata);
 
             CuvantListBox.Visibility = Visibility.Hidden;
 
@@ -113,6 +121,13 @@ namespace Dex__.View
 
         private void CategorieTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
+            if (CategorieTextBox.Text == "")
+            {
+                CategorieListBox.Visibility = Visibility.Hidden;
+                CategorieSelectata = "none";
+                return;
+            }
+
             MainWindow parentWindow = Window.GetWindow(this) as MainWindow;
 
             if (!parentWindow.viewModel.verifyIfCategorieExists(CategorieTextBox.Text))
@@ -126,10 +141,6 @@ namespace Dex__.View
                 CategorieListBox.Visibility = Visibility.Visible;
 
             CategorieListBox.ItemsSource = parentWindow.viewModel.CategoriiAfisate;
-
-            if (CategorieTextBox.Text == "")
-                CategorieListBox.Visibility = Visibility.Hidden;
-
 
         }
         private void CategorieListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -155,6 +166,12 @@ namespace Dex__.View
             CategorieName.Text = "";
 
             cuvantImage.Source = null;
+
+            CategorieTextBox.Text = "";
+
+            CategorieSelectata = "none";
+
+            CuvantTextBox.Text = "";
         }
 
     }

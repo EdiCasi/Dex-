@@ -7,7 +7,7 @@
              
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
-             Background="#31005c" FontSize="20"
+             Background="#31005c" FontSize="18"
              >
 
 
@@ -39,6 +39,7 @@
                Grid.ColumnSpan="2"
                Margin="50,0,50,50"
                HorizontalContentAlignment="Center"
+               FontSize="28"
                 />
         <TextBox x:Name="CuvantTextBox" 
                  Grid.Row="1"  Grid.Column="2"  
@@ -98,7 +99,7 @@
                 Content="Home" 
                 Grid.Column="1"
                 Grid.Row="4"
-                Margin="0,50,50,0"
+                Margin="0,60,90,0"
                 Click="Home_Click"/>
         <Image 
             x:Name="cuvantImage"
@@ -115,7 +116,8 @@
         <TextBox x:Name="CategorieTextBox" 
                  Margin="19.6,51,20.4,13"
                  Grid.Row="1"  Grid.Column="1"  
-                 TextChanged="CategorieTextBox_TextChanged"/>
+                 TextChanged="CategorieTextBox_TextChanged"
+                 TextWrapping="Wrap"/>
 
         <ListBox x:Name="CategorieListBox"
                  Grid.Row="1" Grid.Column="1"  
