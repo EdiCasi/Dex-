@@ -1,0 +1,132 @@
+﻿<UserControl x:Class="Dex__.View.ModCautare"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Dex__.View"
+             
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"
+             Background="#31005c" FontSize="20"
+             >
+
+
+
+    <Grid>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="20"/>
+        </Grid.ColumnDefinitions>
+
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
+
+        <Label Content="DEX"
+               Grid.Row="1"
+               Grid.Column="2"
+               Grid.ColumnSpan="2"
+               Margin="50,0,50,50"
+               HorizontalContentAlignment="Center"
+                />
+        <TextBox x:Name="CuvantTextBox" 
+                 Grid.Row="1"  Grid.Column="2"  
+                 Grid.ColumnSpan="2"  Margin="19.6,51,20.4,13"
+                 TextChanged="CuvantTextBox_TextChanged"
+                 />
+
+
+        <ListBox x:Name="CuvantListBox"
+                 Grid.Row="1" Grid.Column="2"  
+                 Grid.ColumnSpan="2"  Grid.RowSpan="2"
+                 Margin="19.6,79,20.4,0" 
+                 Visibility="Hidden"
+                 Panel.ZIndex="2" 
+                 SelectionChanged="CuvantListBox_SelectionChanged"
+                 ScrollViewer.VerticalScrollBarVisibility="Visible"
+                 DisplayMemberPath="Word"
+                 />
+
+
+        <Button
+            x:Name="Search"
+            Content="Search"
+            Grid.Column="3"
+            Grid.Row="1"
+            Grid.ColumnSpan="2"
+            Margin="166.2,51,127,13.4" Click="Search_Click"/>
+
+
+        <TextBlock x:Name="CuvantName"
+                   Grid.Column="1"
+                   Grid.Row="2"
+                   TextAlignment="Right" FontWeight="Bold"
+                  />
+
+        <TextBlock x:Name="DeffinitionText"
+                   Grid.Row="2"
+                   Grid.Column="2"
+                   Grid.ColumnSpan="3"
+                   Grid.RowSpan="2"
+                   Margin="19.6,0,127,0"/>
+
+        <TextBlock x:Name="CategorieText"
+                   Text="Categorie ="
+                   Grid.Column="1"
+                   Grid.Row="3"
+                   TextAlignment="Right" FontWeight="Bold"
+                   Visibility="Hidden"
+                  />
+        <TextBlock x:Name="CategorieName"
+                   Grid.Column="2"
+                   Grid.Row="3"
+                   Margin="19.6,0,0,0"
+                  />
+
+        <Button x:Name="Home"
+                Content="Home" 
+                Grid.Column="1"
+                Grid.Row="4"
+                Margin="0,50,50,0"
+                Click="Home_Click"/>
+        <Image 
+            x:Name="cuvantImage"
+            Grid.Column="4" 
+            Grid.Row="1" 
+            Grid.RowSpan="3" 
+            Margin="67.6,102,0,0"
+            HorizontalAlignment="Left" 
+            VerticalAlignment="Top" 
+            Height="205" Width="132" 
+            Grid.ColumnSpan="2" />
+
+
+        <TextBox x:Name="CategorieTextBox" 
+                 Margin="19.6,51,20.4,13"
+                 Grid.Row="1"  Grid.Column="1"  
+                 TextChanged="CategorieTextBox_TextChanged"/>
+
+        <ListBox x:Name="CategorieListBox"
+                 Grid.Row="1" Grid.Column="1"  
+                 Grid.RowSpan="3"
+                 Margin="20,79,20.4,86.2" 
+                 Visibility="Hidden"
+                 SelectionChanged="CategorieListBox_SelectionChanged"
+                 Panel.ZIndex="2"
+                />
+
+
+
+    </Grid>
+</UserControl>

@@ -1,0 +1,32 @@
+﻿<UserControl x:Class="Dex__.View.Home"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Dex__.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" 
+             Background="#31005c" FontSize="28">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+
+        <StackPanel Orientation="Vertical" Grid.Column="1">
+            
+            <Button x:Name="Cautare" Content="Cautare" 
+                    Height="50" Margin="0,100,0,0" Click="Cautare_Click"/>
+
+            <Button x:Name="Administrativ" Content="Administrativ"
+                    Height="50" Margin="0,50,0,0" Click="Administrativ_Click"/>
+
+            <Button x:Name="Divertisment" Content="Divertisment" 
+                    Height="50" Margin="0,50,0,0" Click="Divertisment_Click"/>
+            
+        </StackPanel>
+        
+    </Grid>
+</UserControl>
