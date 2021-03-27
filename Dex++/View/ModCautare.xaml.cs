@@ -20,22 +20,8 @@ namespace Dex__.View
 {
     public partial class ModCautare : UserControl
     {
-
-        private string categorieSelectata = "";
-
-        public string CategorieSelectata
-        {
-            get { return categorieSelectata; }
-            set { categorieSelectata = value; }
-        }
-
-
-        private Cuvant cuvantSelectat;
-        public Cuvant CuvantSelectat
-        {
-            get { return cuvantSelectat; }
-            set { cuvantSelectat = value; }
-        }
+        public string CategorieSelectata { get; set; } = "";
+        public Cuvant CuvantSelectat { get; set; }
 
         public ModCautare()
         {
@@ -94,8 +80,8 @@ namespace Dex__.View
                 CategorieName.Text = CuvantSelectat.Categorie;
             else CategorieName.Text = "none";
 
-            if (cuvantSelectat.ImagePath != null)
-                cuvantImage.Source = new BitmapImage(new Uri(cuvantSelectat.ImagePath, UriKind.RelativeOrAbsolute));
+            if (CuvantSelectat.ImagePath != null)
+                cuvantImage.Source = new BitmapImage(new Uri(CuvantSelectat.ImagePath, UriKind.RelativeOrAbsolute));
             else cuvantImage.Source = new BitmapImage(new Uri(@"C:\C# Test\default.jpg", UriKind.RelativeOrAbsolute));
 
         }
@@ -108,11 +94,11 @@ namespace Dex__.View
 
             MainWindow parentWindow = Window.GetWindow(this) as MainWindow;
 
-            CuvantSelectat = parentWindow.viewModel.GetCuvantFormText(CuvantTextBox.Text);
+            CuvantSelectat = parentWindow.viewModel.GetCuvantFormText(CuvantTextBox.Text,CategorieSelectata);
 
             CuvantListBox.Visibility = Visibility.Hidden;
 
-            if (cuvantSelectat == null)
+            if (CuvantSelectat == null)
             {
                 ClearWindow();
                 DeffinitionText.Text = "Cuvant negasit!";
@@ -129,19 +115,21 @@ namespace Dex__.View
         {
             MainWindow parentWindow = Window.GetWindow(this) as MainWindow;
 
+            if (!parentWindow.viewModel.verifyIfCategorieExists(CategorieTextBox.Text))
+                CategorieSelectata = "none";
+
+
             parentWindow.viewModel.ModifyCategoriiAfisate(CategorieTextBox.Text);
+
             if (parentWindow.viewModel.CategoriiAfisate.Count != 0)
+
                 CategorieListBox.Visibility = Visibility.Visible;
-            else
-                CategorieSelectata = "";
 
             CategorieListBox.ItemsSource = parentWindow.viewModel.CategoriiAfisate;
 
             if (CategorieTextBox.Text == "")
-            {
                 CategorieListBox.Visibility = Visibility.Hidden;
-                CategorieSelectata = "";
-            }
+
 
         }
         private void CategorieListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

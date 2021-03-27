@@ -22,10 +22,8 @@ namespace Dex__.Model
 
         public ViewModel()
         {
-            Categorii = new List<string>()
-            {
-                "blabla","blabla","anaa"
-            };
+            Categorii = new List<string>();
+            Categorii.Add("none");
 
             CategoriiAfisate = new ObservableCollection<string>();
 
@@ -60,7 +58,9 @@ namespace Dex__.Model
             {
                 if (cuvant.Word.IndexOf(cuvantNouLowerCase) == 0)
                 {
-                    if (categorieSelectata == "" || cuvant.Categorie == categorieSelectata)
+                    if (categorieSelectata == "" ||
+                        categorieSelectata == "none" ||
+                        cuvant.Categorie == categorieSelectata)
                         CuvinteAfisate.Add(cuvant);
                 }
             }
@@ -85,24 +85,39 @@ namespace Dex__.Model
                 if (entries.Length > 2)
                 {
                     cuvantNou.Categorie = entries[2];
+                    addCategorie(entries[2]);
                     if (entries.Length > 3)
                         cuvantNou.ImagePath = entries[3];
                 }
+                else cuvantNou.Categorie = "none";
 
                 Cuvinte.Add(cuvantNou);
             }
 
         }
 
-        public Cuvant GetCuvantFormText(string cuvantNou)
+        public Cuvant GetCuvantFormText(string cuvantNou, string categorie)
         {
             foreach (Cuvant cuvant in Cuvinte)
             {
                 if (cuvant.Word == cuvantNou)
-                    return cuvant;
+                {
+                    if (cuvant.Categorie == categorie || categorie == "none" || categorie == "")
+                        return cuvant;
+                }
             }
             return null;
         }
 
+        public void addCategorie(string categorieNoua)
+        {
+            if (!verifyIfCategorieExists(categorieNoua))
+                Categorii.Add(categorieNoua);
+        }
+
+        public bool verifyIfCategorieExists(string categorieNoua)
+        {
+            return Categorii.Contains(categorieNoua);
+        }
     }
 }
