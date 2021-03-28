@@ -43,23 +43,22 @@ namespace Dex__.View
         private void CuvantTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (CuvantTextBox.Text == "")
-            { 
-                CuvantListBox.Visibility = Visibility.Hidden; 
-                return; 
+            {
+                CuvantListBox.Visibility = Visibility.Hidden;
+                return;
             }
 
             MainWindow parentWindow = Window.GetWindow(this) as MainWindow;
 
             parentWindow.viewModel.ModifyCuvinteAfisate(CuvantTextBox.Text, CategorieSelectata);
 
-            if (parentWindow.viewModel.CuvinteAfisate.Count != 0)
-                CuvantListBox.Visibility = Visibility.Visible;
-
-            CuvantListBox.ItemsSource = parentWindow.viewModel.CuvinteAfisate;
-
-            if (CuvantTextBox.Text == "")
+            if (parentWindow.viewModel.CuvinteAfisate.Count == 0)
                 CuvantListBox.Visibility = Visibility.Hidden;
-
+            else
+            {
+                CuvantListBox.ItemsSource = parentWindow.viewModel.CuvinteAfisate;
+                CuvantListBox.Visibility = Visibility.Visible;
+            }
         }
 
         private void CuvantListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -138,7 +137,7 @@ namespace Dex__.View
 
             parentWindow.viewModel.ModifyCategoriiAfisate(CategorieTextBox.Text);
 
-            if (parentWindow.viewModel.CategoriiAfisate.Count != 0)  //TOOOOO
+            if (parentWindow.viewModel.CategoriiAfisate.Count != 0)
                 CategorieListBox.Visibility = Visibility.Visible;
 
             CategorieListBox.ItemsSource = parentWindow.viewModel.CategoriiAfisate;

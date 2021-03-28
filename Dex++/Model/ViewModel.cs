@@ -156,7 +156,7 @@ namespace Dex__.Model
 
             if (imagePath == "")
                 cuvantNou.ImagePath = @"C:\C# Test\default.jpg";
-
+            else cuvantNou.ImagePath = imagePath;
             Cuvinte.Add(cuvantNou);
 
             MessageBox.Show("Cuvantul: " + cuvantName + "a fost adaugat cu succes !");
@@ -198,6 +198,16 @@ namespace Dex__.Model
                 sw.WriteLine(line);
             }
             sw.Close();
+        }
+
+
+        public string returnRandomCuvant()
+        {
+            Random rand = new Random();
+
+            string cuvantNou = Cuvinte.ElementAt(rand.Next(Cuvinte.Count())).Word;
+
+            return cuvantNou;
         }
     }
 }

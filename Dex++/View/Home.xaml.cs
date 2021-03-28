@@ -45,9 +45,11 @@ namespace Dex__.View
         private void Divertisment_Click(object sender, RoutedEventArgs e)
         {
             MainWindow parentWindow = Window.GetWindow(this) as MainWindow;
+            
             if (parentWindow != null)
             {
                 parentWindow.setContent(parentWindow.Divertisment);
+                parentWindow.Divertisment.displayDefaultWindow();
             }
         }
     }

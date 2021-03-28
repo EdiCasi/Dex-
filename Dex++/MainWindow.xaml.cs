@@ -36,6 +36,7 @@ namespace Dex__
             Administrativ = new ModAdministrativ();
             Divertisment = new ModDivertisment();
             viewModel = new ViewModel();
+
             InitializeComponent();
 
             this.Content = Home;
